@@ -1,0 +1,38 @@
+@use './variables' as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-stack;
+  
+  // AQUÍ ESTABA EL ERROR: Cambiamos $gray-50 por $bg-base
+  background-color: $bg-base; 
+  
+  // Y también actualizamos el color del texto
+  color: $text-primary; 
+  
+  -webkit-font-smoothing: antialiased;
+  // Esta línea hace que el cambio de claro a oscuro se vea con una animación suave
+  transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+// Reseteo básico de listas y enlaces
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}

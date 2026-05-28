@@ -1,0 +1,222 @@
+@use '../../../app/styles/variables' as *;
+
+.aura-sidebar {
+  width: var(--sidebar-w);
+  min-width: var(--sidebar-w);
+  height: 100vh;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: background var(--transition), border-color var(--transition);
+  position: relative;
+  z-index: 100;
+  flex-shrink: 0;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.1rem 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+    min-height: 64px;
+  }
+
+  &__logo-mark {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, var(--brand-primary), #a855f7);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #ffffff; 
+    font-weight: 800;
+    flex-shrink: 0;
+    box-shadow: 0 0 16px var(--brand-glow);
+  }
+
+  &__logo-text {
+    white-space: nowrap;
+    
+    strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+    }
+    span {
+      display: block;
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+  }
+
+  &__scroll {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 1rem 0;
+
+    &::-webkit-scrollbar { width: 4px; }
+    &::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 4px; }
+  }
+
+  &__section-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 1rem 1.25rem 0.5rem;
+  }
+
+  &__nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 1rem;
+    margin: 2px 0.75rem;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 500;
+    transition: background 0.15s, color 0.15s;
+    text-decoration: none;
+
+    &:hover {
+      background: var(--bg-elevated);
+      color: var(--text-primary);
+    }
+
+    &.active {
+      background: var(--brand-subtle);
+      color: var(--brand-primary);
+      font-weight: 600;
+
+      .aura-sidebar__nav-icon { 
+        color: var(--brand-primary); 
+      }
+    }
+  }
+
+  &__nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: color 0.15s;
+  }
+
+  &__nav-label {
+    flex: 1;
+  }
+
+  &__badge {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--danger);
+    color: #ffffff;
+  }
+
+  &__chevron {
+    color: var(--text-muted);
+    transition: transform 0.2s;
+    
+    &--open { transform: rotate(90deg); }
+  }
+
+  &__sub-nav {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.25s ease;
+
+    &--open { max-height: 400px; }
+  }
+
+  &__sub-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 1rem 0.5rem 3rem;
+    margin: 1px 0.75rem;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 12.5px;
+    font-weight: 500;
+    transition: background 0.15s, color 0.15s;
+    text-decoration: none;
+
+    &:hover { 
+      background: var(--bg-elevated); 
+      color: var(--text-primary); 
+    }
+    
+    &.active { 
+      color: var(--brand-primary);
+      font-weight: 600; 
+    }
+  }
+
+  &__divider {
+    height: 1px;
+    background: var(--border-color);
+    margin: 1rem 1.25rem;
+  }
+
+  &__footer {
+    border-top: 1px solid var(--border-color);
+    padding: 1rem;
+    background: var(--bg-sidebar);
+  }
+
+  &__user-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background 0.15s;
+
+    &:hover { background: var(--bg-elevated); }
+  }
+
+  &__avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--brand-primary), #a855f7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  &__user-info {
+    flex: 1;
+
+    p:first-child { 
+      font-size: 13px; 
+      font-weight: 600; 
+      color: var(--text-primary); 
+    }
+    p:last-child { 
+      font-size: 11px; 
+      color: var(--text-muted); 
+    }
+  }
+}

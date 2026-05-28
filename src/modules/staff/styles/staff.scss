@@ -1,0 +1,118 @@
+@use '../../../app/styles/variables' as *;
+
+.aura-staff {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  &__button {
+    background-color: var(--brand-primary);
+    color: #ffffff;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 0 12px var(--brand-glow);
+    transition: background-color var(--transition);
+
+    &:hover { background-color: var(--brand-hover); }
+  }
+
+  &__table-container {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 13.5px;
+  }
+
+  &__th {
+    background-color: var(--bg-elevated);
+    color: var(--text-secondary);
+    font-weight: 600;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+  }
+
+  &__tr {
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.15s;
+
+    &:last-child { border-bottom: none; }
+    &:hover { background-color: var(--bg-elevated); }
+  }
+
+  &__td {
+    padding: 1rem 1.25rem;
+    color: var(--text-primary);
+    vertical-align: middle;
+  }
+
+  &__profile {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  &__initials {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--bg-elevated);
+    color: var(--brand-primary);
+    font-weight: 700;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    background-color: var(--brand-subtle);
+    color: var(--brand-primary);
+    border: 1px solid rgba(236, 72, 153, 0.15);
+  }
+
+  /* Estados de Carga / Error */
+  &__status-box {
+    padding: 3rem;
+    text-align: center;
+    color: var(--text-secondary);
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+  }
+}
