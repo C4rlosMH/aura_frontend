@@ -1,0 +1,113 @@
+.aura-page-container {
+  padding: 24px;
+  background-color: #f8fafc;
+  min-height: 100vh;
+}
+
+.aura-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+
+  h2 {
+    margin: 0;
+    color: #0f172a;
+    font-size: 1.5rem;
+  }
+}
+
+.aura-table-wrapper {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.aura-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+
+  th, td {
+    padding: 16px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  th {
+    background-color: #f8fafc;
+    color: #475569;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  td {
+    color: #1e293b;
+    font-size: 0.875rem;
+  }
+
+  tbody tr:hover {
+    background-color: #f1f5f9;
+  }
+}
+
+.aura-table-empty {
+  text-align: center;
+  padding: 48px !important;
+  color: #64748b;
+}
+
+.text-muted {
+  color: #64748b;
+}
+
+.text-small {
+  font-size: 0.75rem;
+}
+
+.aura-badge {
+  padding: 4px 8px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  &.outline {
+    border: 1px solid #cbd5e1;
+    color: #475569;
+    background: transparent;
+  }
+
+  &.solid {
+    color: #ffffff;
+  }
+}
+
+.aura-btn-primary {
+  background-color: #0ea5e9;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #0284c7;
+  }
+}
+
+.aura-btn-icon {
+  background: transparent;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background: #e2e8f0;
+  }
+}
