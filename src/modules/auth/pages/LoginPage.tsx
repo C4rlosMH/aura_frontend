@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { LogIn, Shield } from 'lucide-react';
+import { LogIn } from 'lucide-react';
 import { useAuthStore } from '../store/authStore';
 import api from '../../../core/api/axios';
 import '../styles/login.scss';
@@ -9,12 +9,11 @@ export const LoginPage = () => {
   const navigate = useNavigate();
   const setLogin = useAuthStore((state) => state.setLogin);
 
-  // Estados del formulario
-  const [email, setEmail] = useState('');
+  // Estados del formulario: Cambiamos 'email' por 'identifier'
+  const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
   
-  // Estados de control de la petición
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -24,21 +23,16 @@ export const LoginPage = () => {
     setIsLoading(true);
 
     try {
-      // Petición real a tu controlador auth.controller.ts -> POST /api/auth/login
-      const response = await api.post('/auth/login', { email, password });
+      // Enviamos 'identifier' como espera nuestro auth.controller.ts
+      const response = await api.post('/auth/login', { identifier, password });
       
-      // Asumiendo que tu backend responde con: { token: '...', user: { id, nombre, email, role } }
       const { token, user } = response.data;
-
-      // Guardamos la sesión usando nuestra lógica automatizada de Zustand y Storage
       setLogin(token, user, rememberMe);
-      
-      // Redirigimos al área segura (Dashboard)
       navigate('/');
     } catch (error: any) {
       console.error("Error en autenticación:", error);
       setErrorMessage(
-        error.response?.data?.message || 
+        error.response?.data?.error || 
         'Credenciales inválidas o servidor inalcanzable. Inténtalo de nuevo.'
       );
     } finally {
@@ -69,15 +63,16 @@ export const LoginPage = () => {
             )}
 
             <div className="aura-login__group">
-              <label htmlFor="email">Correo Electrónico</label>
+              {/* Actualizamos la etiqueta para indicar que acepta ambos */}
+              <label htmlFor="identifier">Usuario o Correo Electrónico</label>
               <input
-                id="email"
-                type="email"
+                id="identifier"
+                type="text"
                 required
-                placeholder="ejemplo@empresa.com"
+                placeholder="ejemplo@empresa.com o mi_usuario"
                 className="aura-login__input"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={identifier}
+                onChange={(e) => setIdentifier(e.target.value)}
                 disabled={isLoading}
               />
             </div>
